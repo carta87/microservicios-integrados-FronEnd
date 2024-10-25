@@ -1,0 +1,41 @@
+<h2>Crear Curso</h2>
+<hr>
+
+<form [formGroup]="fgvalidacion">
+  <div class="container-fluid">
+    <div class="d-flex justify-content-center">
+      <h6 class="subtitulo">Datos Del Curso</h6>
+    </div>
+    <div class="margin-zona">
+      <div class="col-12 mt-4">
+        <label class="form-label" for="numeroCurso"><strong>Numero curso</strong></label>
+        <input class="form-control" formControlName="numeroCurso" type="text">
+        <span *ngIf="fgvalidacion.get('numeroCurso')?.invalid &&
+            fgvalidacion.get('numeroCurso')?.dirty" class="text-danger">
+          {{getErrorMessage('numeroCurso')}}
+        </span>
+      </div>
+      <div class="col-12 mt-4">
+        <label class="form-label" for="nombreCurso"><strong>Nombre curso</strong></label>
+        <input class="form-control" formControlName="nombreCurso" type="text">
+        <span *ngIf="fgvalidacion.get('nombreCurso')?.invalid &&
+            fgvalidacion.get('nombreCurso')?.dirty" class="text-danger">
+          {{getErrorMessage('nombreCurso')}}
+        </span>
+      </div>
+      <div class="col-12 mt-4">
+        <label class="form-label" for="nombreProfesor"><strong>Nombre profesor a cargo</strong></label>
+        <input class="form-control" formControlName="nombreProfesor" type="text">
+        <span *ngIf="fgvalidacion.get('nombreProfesor')?.invalid
+            && fgvalidacion.get('nombreProfesor')?.dirty" class="text-danger">
+          {{getErrorMessage('nombreProfesor')}}
+        </span>
+      </div>
+    </div>
+    <div class="margin-zona d-flex justify-content-center mt-5">
+      <button class="btn btn-primary" (click)="create()" type="button">Guardar
+      </button>
+    </div>
+  </div>
+  <hr>
+</form>

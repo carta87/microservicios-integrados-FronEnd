@@ -1,0 +1,104 @@
+<div class="container-fluid">
+  <div style="margin-left: 10%; margin-right: 10%;">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block">
+            <img src="./../../../../../assets/img/paisaje.jpg" alt="" style="width: 100%; height: 100%;">
+          </div>
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h4 class="text-gray-900 mb-4"><strong>Create an Account!</strong></h4>
+              </div>
+              <form class="user" [formGroup]="fgvalidacion">
+                <p class="text-danger">{{loginError}}</p>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" placeholder="First Name"
+                      formControlName="firsName">
+                    <span *ngIf="fgvalidacion.get('firsName')?.invalid &&
+                        fgvalidacion.get('firsName')?.dirty" class="text-danger">
+                      {{getErrorMessage('firsName')}}
+                    </span>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" placeholder="Last Name"
+                      formControlName="lastName">
+                    <span *ngIf="fgvalidacion.get('lastName')?.invalid &&
+                        fgvalidacion.get('lastName')?.dirty" class="text-danger">
+                      {{getErrorMessage('lastName')}}
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" placeholder="Username"
+                      formControlName="username">
+                    <span *ngIf="fgvalidacion.get('username')?.invalid &&
+                        fgvalidacion.get('username')?.dirty" class="text-danger">
+                      {{getErrorMessage('username')}}
+                    </span>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" placeholder="City"
+                      formControlName="country">
+                    <span *ngIf="fgvalidacion.get('country')?.invalid &&
+                      fgvalidacion.get('country')?.dirty" class="text-danger">
+                      {{getErrorMessage('country')}}
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control form-control-user" placeholder="Email Address"
+                    formControlName="email">
+                  <span *ngIf="fgvalidacion.get('email')?.invalid &&
+                    fgvalidacion.get('email')?.dirty" class="text-danger">
+                    {{getErrorMessage('email')}}
+                  </span>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="password" class="form-control form-control-user" placeholder="Password"
+                      formControlName="password">
+                    <span *ngIf="fgvalidacion.get('password')?.invalid &&
+                      fgvalidacion.get('password')?.dirty" class="text-danger">
+                      {{getErrorMessage('password')}}
+                    </span>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="password" class="form-control form-control-user" placeholder="Repeat Password"
+                      formControlName="confirmPassword">
+                    <span *ngIf="fgvalidacion.get('confirmPassword')?.invalid &&
+                      fgvalidacion.get('confirmPassword')?.dirty" class="text-danger">
+                      {{getErrorMessage('confirmPassword')}}
+                    </span>
+                  </div>
+                </div>
+                <div class="col-12 px-5">
+                  <a class="btn btn-primary btn-user btn-block" (click)="register()">
+                    Register Account
+                  </a>
+                  <hr>
+                  <a class="btn btn-google btn-user btn-block">
+                    <i class="fa fa-google" style="margin-right: 1%;"></i> Register with Google
+                  </a>
+                  <a class="btn btn-facebook btn-user btn-block">
+                    <i class="fa fa-facebook-f" style="margin-right: 1%;"></i> Register with Facebook
+                  </a>
+                </div>
+              </form>
+              <hr>
+              <div class="text-center">
+                <a class="small">Forgot Password?</a>
+              </div>
+              <div class="text-center">
+                <a class="small" [routerLink]="['/seguridad/login']">Already have an account? Login!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

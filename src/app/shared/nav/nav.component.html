@@ -1,21 +1,37 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" [routerLink]="['/inicio']">Home</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand">Logo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" [routerLink]="['/inicio']" >Portafolio</a>
+          <a class="nav-link" [routerLink]="['/inicio']">Home</a>
         </li>
-        <li *ngIf="!userLoginOn" class="nav-item">
-          <a class="nav-link" [routerLink]="['/seguridad/login']">Iniciar Sesion</a>
+        @if (userLoginOn) {
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/cursos/listar']">Cursos</a>
         </li>
-        <li *ngIf="userLoginOn" class="nav-item">
-          <a class="nav-link" [routerLink]="['/inicio']">Cerar Sesion</a>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/estudiantes/listar']">Estudiantes</a>
         </li>
+        }
       </ul>
+      <form class="d-flex">
+        <a *ngIf="userLoginOn" class="navbar-brand">Bienvenido {{userName | uppercase}}</a>
+        <ul class="navbar-nav me-auto">
+          <li *ngIf="!userLoginOn" class="nav-item">
+            <a class="nav-link" [routerLink]="['usuarios/create']">Register</a>
+          </li>
+          <li *ngIf="userLoginOn" class="nav-item">
+            <a class="nav-link" (click)="logout()" [routerLink]="['/inicio']">logout</a>
+          </li>
+          <li *ngIf="!userLoginOn" class="nav-item">
+            <a class="nav-link" [routerLink]="['/seguridad/login']">Login</a>
+          </li>
+        </ul>
+      </form>
     </div>
   </div>
 </nav>

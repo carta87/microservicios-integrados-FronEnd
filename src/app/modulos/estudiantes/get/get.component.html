@@ -1,0 +1,48 @@
+<div class="container-fluid my-3">
+  <h4 style="margin-left:2%;"><strong>Listado de estudiantes</strong></h4>
+  <hr>
+
+  <div class="table-container margin-zona">
+    <button type="button" class="btn btn-success btn-crear" [routerLink]="['/estudiantes/crear']">Crear
+      Estudiante
+    </button>
+    <table class="table table-bordered border-secundary table-hover table-striped shadow ">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Email</th>
+          <th>Acudiente</th>
+          <th>No.Curso</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let estudiante of listaEstudiantes | paginate: {itemsPerPage: 10, currentPage: page } let i = index">
+          <td>{{i +1}}</td>
+          <td>{{estudiante.name }}</td>
+          <td>{{estudiante.lastName}}</td>
+          <td>{{estudiante.email}}</td>
+          <td>
+            {{estudiante.attendant ? estudiante.attendant.name : 'N/A'}}
+            {{estudiante.attendant ? estudiante.attendant.lastName : ''}}
+          </td>
+          <td>{{estudiante.courseNumber}}</td>
+          <td>
+            <button [routerLink]="['/estudiantes/editar', estudiante.id]" type="button"
+              class="btn btn-primary btn-standar">Editar</button>
+            &nbsp;
+            <button [routerLink]="['/estudiantes/listar']" type="button" class="btn btn-danger btn-standar"
+              (click)="deleteEstudiante(estudiante.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-end">
+      <pagination-controls previousLabel="Anterior" nextLabel="Siguiente"
+        (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

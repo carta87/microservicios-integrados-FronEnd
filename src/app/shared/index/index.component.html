@@ -1,9 +1,62 @@
-<app-nav/>
-<p>estado de login de usuario {{userLoginOn}}</p>
-<div *ngIf="userLoginOn">
-  <p>Nombre: {{userData?.name}}</p>
-  <p>Apellido: {{userData?.lastName}}</p>
-  <p>Email: {{userData?.email}}</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-1">
+    </div>
+    <div class="col-lg-3">
+      <img src="../../../assets/img/index.jpg" alt="Sueña aprender" style="margin-top: 10%;" class="img-fluid" />
+    </div>
+    <div class="col-lg-8 " style="font-size: 20px;">
+      <div class="mt-2">
+        <br>
+        <h2><strong><i>Bienvenidos Colegio WEB</i> </strong> </h2>
+      </div>
+      <br>
+      @if (!userLoginOn) {
+      <div class="margin-mensaje-home">
+        <p><i>Somos un equipo de profesionales de emprendedores, soñadores,
+            amantes de la educacion, intrépidos en el servicio de gestion de cursos academicos.</i></p>
+        <p><i>Aspiramos a mejorar la vida de las personas aportando nuestro compromiso, eficiencia y calidad
+            a nuestros clientes. </i></p> <br>
+        <p>¡Si tu también sueñas, únete a nosotros! <i><strong><a [routerLink]="['/seguridad/login']"
+                class="btn text-primary">Iniciar sesion</a></strong></i></p>
+      </div>
+      } @else {
+      <div class="container mt-2">
+        <div class="row margin-zona">
+          <div class="col-sm-5 border border-dark p-3">
+            <h3>Menu Cursos</h3>
+            <p>Encontrara acontinuacion las siguientes opciones.</p>
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/cursos/crear']">Crear curso.</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/cursos/listar']">Lista de cursos.</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/cursos/editar']">Editar curso por identificador.</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/cursos/filtro']">Filtrar inscritos por numero de curso.</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-5 border border-dark p-3">
+            <h3>Menu Estudiantes</h3>
+            <p>Encontrara acontinuacion las siguientes opciones.</p>
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/estudiantes/crear']">Crear Estudiante.</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/estudiantes/listar']">Lista de estudiantes.</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
 </div>
-
-

@@ -1,0 +1,29 @@
+<h2>Lista de Cursos</h2>
+<hr>
+
+<div class="row">
+  <div class="col-sm-4 mt-3"
+    *ngFor="let item of listaCourse  | paginate: {itemsPerPage: 6, currentPage: page } let i = index">
+    <div class="card">
+      <div class="card-body" style="background-color: rgb(242, 238, 232);">
+        <h5 class="card-title">Curso id: {{item.id}}</h5>
+        <p class="card-text">
+          <strong>Numero:</strong> {{item.numberCourse}}<br>
+          <strong>Nombre:</strong> {{item.name}}<br>
+          <strong>Profesor:</strong> {{item.teacher}}<br>
+        </p>
+        <button [routerLink]="['/cursos/editar', item.id]" class="btn btn-primary btn-standar">
+          Editar
+        </button>
+        &nbsp;
+        <button (click)="delteCurso(item.id)" class="btn btn-danger btn-standar">
+          Elminar
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end mt-3">
+    <pagination-controls previousLabel="Anterior" nextLabel="Siguiente"
+      (pageChange)="page = $event"></pagination-controls>
+  </div>
+</div>

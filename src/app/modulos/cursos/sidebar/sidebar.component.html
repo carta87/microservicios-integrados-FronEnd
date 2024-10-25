@@ -1,0 +1,17 @@
+<div class="container-fluid" style="width: 90%;">
+  <div class="row mt-4">
+    <div class="col-4">
+      <h2>Menu</h2>
+      <hr>
+      <ul class="list-group">
+        <li *ngFor="let item of templateMenu" [routerLink]="[item.ruta]" routerLinkActive="active"
+          class="list-group-item">
+          {{ item.texto }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

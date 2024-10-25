@@ -1,0 +1,25 @@
+table{
+  text-align: center;
+}
+
+.button-spacing {
+  margin-right: 10px;
+}
+
+.table-container{
+  overflow-x: auto;
+}
+
+.btn-crear{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-standar{
+  width: 80px;
+}
+
+.margin-zona{
+  margin-left: 6%;
+  margin-right: 6%;
+}

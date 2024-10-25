@@ -1,0 +1,84 @@
+<h2>Filtrar por numero de curso</h2>
+<hr>
+
+<form [formGroup]="fgvalidacion" *ngIf="!mostrarFormulario">
+  <div class="container-fluid">
+    <div class="d-flex justify-content-center">
+      <h6 class="subtitulo">Datos Del Curso</h6>
+    </div>
+    <div class="margin-zona">
+      <div class="col-12 my-4">
+        <label class="form-label" for="numeroCurso"><strong>Numero de Curso</strong></label>
+        <input class="form-control" formControlName="numeroCurso" type="text">
+        <span *ngIf="fgvalidacion.get('numeroCurso')?.invalid
+              && fgvalidacion.get('numeroCurso')?.dirty" class="text-danger">
+          {{getErrorMessage('numeroCurso')}}
+        </span>
+      </div>
+    </div>
+    <div class="margin-zona d-flex justify-content-center mt-7">
+      <button class="btn btn-primary" (click)="buscar()" type="button">Buscar
+      </button>
+    </div>
+  </div>
+  <hr>
+</form>
+
+<form *ngIf="mostrarFormulario" [formGroup]="fgvalidacion">
+  <div class="container-fluid">
+    <div class="d-flex justify-content-center">
+      <h6 class="subtitulo"><strong>Datos Del Curso</strong></h6>
+    </div>
+    <div class="row margin-zona">
+      <div class="col-lg-6 col-sm-6">
+        <label class="form-label" for="numeroCurso"><strong>Numero curso</strong></label>
+        <input class="form-control" formControlName="numeroCurso" type="text" style="background-color: aquamarine;"
+          readonly>
+        <span *ngIf="fgvalidacion.get('numeroCurso')?.invalid &&
+             fgvalidacion.get('numeroCurso')?.dirty" class="text-danger">
+          {{getErrorMessage('numeroCurso')}}
+        </span>
+      </div>
+      <div class="col-lg-6 col-sm-6">
+        <label class="form-label" for="nombreProfesor"><strong>Nombre profesor a cargo</strong></label>
+        <input class="form-control" formControlName="nombreProfesor" type="text" style="background-color: aquamarine;"
+          readonly>
+        <span *ngIf="fgvalidacion.get('nombreProfesor')?.invalid
+             && fgvalidacion.get('nombreProfesor')?.dirty" class="text-danger">
+          {{getErrorMessage('nombreProfesor')}}
+        </span>
+      </div>
+    </div>
+  </div>
+  <hr>
+</form>
+
+<div *ngIf="mostrarFormulario" class="table-container margin-zona">
+  <div class="d-flex justify-content-center my-4">
+    <h6 class="subtitulo"><strong>Listado de estudiantes</strong></h6>
+  </div>
+  <div class="overflow-x-auto">
+    <table class="table table-bordered border-secundary table-hover table-striped shadow ">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>No.Curso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let estudiante of listaEstudiantes; let i = index">
+          <td>{{i +1}}</td>
+          <td>{{estudiante.name }}</td>
+          <td>{{estudiante.lastName}}</td>
+          <td>{{estudiante.courseNumber}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <span *ngIf="listaEstudiantes.length == 0" class="d-flex justify-content-center ">
+    <h5>Sin estudiantes asignados</h5>
+  </span>
+  <hr>
+</div>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { LoginService } from '../../servicios/auth/login.service';
 
@@ -8,25 +8,28 @@ import { LoginService } from '../../servicios/auth/login.service';
   standalone: true,
   imports: [RouterOutlet, CommonModule, RouterLink],
   templateUrl: './nav.component.html',
-  styleUrl: './nav.component.css'
+  styleUrl: './nav.component.css',
 })
-export class NavComponent implements OnInit, OnDestroy{
-
-  userLoginOn: boolean= false;
+export class NavComponent implements OnInit {
+  
+  userName: string = '';
+  userLoginOn: boolean = false;
   loginService = inject(LoginService);
 
   ngOnInit(): void {
-    this.loginService.currentUserLoginOn.subscribe(
-      {
-        next: (userLoginStatus)=> {
-          this.userLoginOn = userLoginStatus;
-        }
-      }
-    )
+    this.loginService.currentUserLoginOn.subscribe({
+      next: (userLoginStatus) => {
+        this.userLoginOn = userLoginStatus;
+      },
+    });
+    this.loginService.currentUserData.subscribe({
+      next: (data) => {
+        this.userName = data.username;
+      },
+    });
   }
 
-  ngOnDestroy(): void {
-    this.loginService.currentUserLoginOn.unsubscribe();
+  public logout() {
+    this.loginService.logout();
   }
-
 }
