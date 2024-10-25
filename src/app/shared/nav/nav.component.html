@@ -19,7 +19,7 @@
         }
       </ul>
       <form class="d-flex">
-        <a *ngIf="userLoginOn" class="navbar-brand">Bienvenido {{userName | uppercase}}</a>
+        <a *ngIf="userLoginOn" class="navbar-brand">Bienvenido {{userName | titlecase }}</a>
         <ul class="navbar-nav me-auto">
           <li *ngIf="!userLoginOn" class="nav-item">
             <a class="nav-link" [routerLink]="['usuarios/create']">Register</a>
